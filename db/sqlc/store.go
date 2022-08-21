@@ -1,6 +1,9 @@
 package db
 
-import "database/sql"
+import (
+	"context"
+	"database/sql"
+)
 
 // Store provides all functions to execute db queries and transaction
 type Store struct {
@@ -14,4 +17,9 @@ func NewStore(db *sql.DB) *Store {
 		db:      db,
 		Queries: New(db),
 	}
+}
+
+// execTx executes a function within a database transaction
+func (store *Store) execTx(ctx context.Context, fn func(queries *Queries) error) error {
+	tx, error := store.db.BeginTx(ctx, nil)
 }
