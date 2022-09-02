@@ -46,3 +46,11 @@ type TransferTxParams struct {
 	ToAccountID   int64 `json:"to_account_id"`
 	Amount        int64 `json:"amount"`
 }
+
+type TransferTxResult struct {
+	Transfer    Transfer `json:"transfer"`
+	FromAccount Account  `json:"fromAccount"`
+	ToAccount   Account  `json:"toAccount"`
+	FromEntry   Entry    `json:"fromEntry"`
+	ToEntry     Entry    `json:"toEntry"`
+}
