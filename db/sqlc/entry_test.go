@@ -4,7 +4,6 @@ import (
 	"SimpleBank/utils"
 	"context"
 	"database/sql"
-	"fmt"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -20,7 +19,7 @@ func CreateRandomEntry(t *testing.T) Entry {
 
 	require.NoError(t, err)
 	require.NotEmpty(t, entry)
-	fmt.Println(arg.AccountID)
+
 	require.Equal(t, arg.AccountID, entry.AccountID)
 	require.Equal(t, arg.Amount, entry.Amount)
 
