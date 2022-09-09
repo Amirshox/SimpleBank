@@ -54,3 +54,13 @@ type TransferTxResult struct {
 	FromEntry   Entry    `json:"fromEntry"`
 	ToEntry     Entry    `json:"toEntry"`
 }
+
+func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
+	var result TransferTxResult
+
+	err := store.execTx(ctx, func(q *Queries) error {
+		result.Transfer, err = q.CreateTransfer(ctx, CreateTransferParams{
+			FromAccountID: arg.FromAccountID,
+		})
+	})
+}
