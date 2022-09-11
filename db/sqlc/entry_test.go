@@ -84,7 +84,7 @@ func TestListEntry(t *testing.T) {
 	require.NoError(t, err)
 	require.Len(t, entries, 5)
 
-	for _, account := range entries {
-		require.NotEmpty(t, account)
+	for _, entry := range entries {
+		require.NotEmpty(t, entry)
 	}
 }
